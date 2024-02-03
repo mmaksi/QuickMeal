@@ -3,6 +3,7 @@ import { Card } from "react-native-paper";
 import styled from "styled-components/native";
 
 const Title = styled.Text`
+  font-family: ${(props) => props.theme.fonts.body};
   padding: ${(props) => props.theme.sizes[1]};
   color: ${(props) => props.theme.colors.text.primary};
 `;
@@ -21,7 +22,9 @@ export default function RestaurantInfoCard({ restaurant = {} }) {
   const {
     name = "Some Restaurant",
     icon,
-    photos = ["https://wallpapercave.com/wp/wp1874173.jpg"],
+    photos = [
+      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
+    ],
     address = "100 some street name",
     isOpenNow = true,
     rating = 4,
