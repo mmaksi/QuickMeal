@@ -11,7 +11,7 @@ const SafeArea = styled.SafeAreaView`
 
 const SearchBarContainer = styled.View`
   flex-grow: 0;
-  padding: 16px;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 export default function RestaurantScreens() {
