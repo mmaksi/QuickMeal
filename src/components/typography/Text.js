@@ -13,12 +13,10 @@ const body = (theme) => `
     font-size: ${theme.fontSizes.body};
 `;
 
-const hint = (theme) => `
+const label = (theme) => `
+    font-family: ${theme.fonts.heading};
     font-size: ${theme.fontSizes.body};
-`;
-
-const error = (theme) => `
-    color: ${theme.colors.text.error};
+    font-weight: ${theme.fontWeights.medium};
 `;
 
 const caption = (theme) => `
@@ -26,10 +24,12 @@ const caption = (theme) => `
     font-weight: ${theme.fontWeights.bold};
 `;
 
-const label = (theme) => `
-    font-family: ${theme.fonts.heading};
+const error = (theme) => `
+    color: ${theme.colors.text.error};
+`;
+
+const hint = (theme) => `
     font-size: ${theme.fontSizes.body};
-    font-weight: ${theme.fontWeights.medium};
 `;
 
 const variants = {
