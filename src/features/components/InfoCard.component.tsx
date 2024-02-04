@@ -1,10 +1,10 @@
 import { SvgXml } from "react-native-svg";
 
-import star from "../../../assets/star.js";
-import open from "../../../assets/open.js";
+import star from "../../../assets/star.ts";
+import open from "../../../assets/open.ts";
 
-import Spacer from "../../components/spacer/Spacer.jsx";
-import Text from "../../components/typography/Text.js";
+import Spacer from "../../components/spacer/Spacer.tsx";
+import Text from "../../components/typography/Text.ts";
 
 import {
   Address,
@@ -15,19 +15,33 @@ import {
   Section,
   SectionEnd,
   Icon,
-} from "./InfoCard.styles.js";
+} from "./InfoCard.styles.ts";
 
-export default function RestaurantInfoCard({ restaurant = {} }) {
+interface Restaurant {
+  name: string;
+  icon: string;
+  photos: string[];
+  address: string;
+  isOpenNow: boolean;
+  rating: number;
+  isClosedTemporarily: boolean;
+}
+
+interface RestaurantInfoCardProps {
+  restaurant: Restaurant;
+}
+
+export default function RestaurantInfoCard({
+  restaurant,
+}: RestaurantInfoCardProps) {
   const {
-    name = "Some Restaurant",
-    icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
-    photos = [
-      "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
-    ],
-    address = "100 some random street",
-    isOpenNow = true,
-    rating = 4,
-    isClosedTemporarily = true,
+    name,
+    icon,
+    photos,
+    address,
+    isOpenNow,
+    rating,
+    isClosedTemporarily,
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.ceil(rating)));

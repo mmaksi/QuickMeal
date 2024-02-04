@@ -10,7 +10,7 @@ import {
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 
-export default function App(): JSX.Element {
+export default function App() {
   const [oswald] = useOswald({
     Oswald_400Regular,
   });

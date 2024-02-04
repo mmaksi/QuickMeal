@@ -1,6 +1,12 @@
 import styled from "styled-components/native";
+import { Theme } from "../../features/components/InfoCard.styles";
 
-const defaultTextStyles = (theme) => `
+interface TextProps {
+  variant?: "body" | "label" | "caption" | "error" | "hint";
+  theme: Theme;
+}
+
+const defaultTextStyles = (theme: Theme) => `
   font-family: ${theme.fonts.body};
   font-weight: ${theme.fontWeights.regular};
   color: ${theme.colors.text.primary};
@@ -9,30 +15,30 @@ const defaultTextStyles = (theme) => `
   margin-bottom: 0px;
 `;
 
-const body = (theme) => `
+const body = (theme: Theme) => `
     font-size: ${theme.fontSizes.body};
 `;
 
-const label = (theme) => `
+const label = (theme: Theme) => `
     font-family: ${theme.fonts.heading};
     font-size: ${theme.fontSizes.body};
     font-weight: ${theme.fontWeights.medium};
 `;
 
-const caption = (theme) => `
+const caption = (theme: Theme) => `
     font-size: ${theme.fontSizes.caption};
     font-weight: ${theme.fontWeights.bold};
 `;
 
-const error = (theme) => `
+const error = (theme: Theme) => `
     color: ${theme.colors.text.error};
 `;
 
-const hint = (theme) => `
+const hint = (theme: Theme) => `
     font-size: ${theme.fontSizes.body};
 `;
 
-const variants = {
+const variants: { [key: string]: (theme: Theme) => string } = {
   body,
   label,
   caption,
@@ -40,11 +46,13 @@ const variants = {
   hint,
 };
 
-export default Text = styled.Text`
+const Text = styled.Text<TextProps>`
   ${({ theme }) => defaultTextStyles(theme)}
-  ${({ variant, theme }) => variants[variant](theme)}
+  ${({ variant, theme }) => variant && variants[variant](theme)}
 `;
 
 Text.defaultProps = {
   variant: "body",
 };
+
+export default Text;
