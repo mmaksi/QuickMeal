@@ -1,5 +1,4 @@
-import React from "react";
-import { Fragment } from "react";
+import React, { Fragment } from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import RestaurantScreens from "./src/features/screen/restaurants.screen";
 import { ThemeProvider } from "styled-components/native";
