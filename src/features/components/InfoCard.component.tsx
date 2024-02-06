@@ -5,6 +5,7 @@ import open from "../../../assets/open.ts";
 
 import Spacer from "../../components/spacer/Spacer.tsx";
 import Text from "../../components/typography/Text.ts";
+import { Result } from "@/services/restaurants/restaurant";
 
 import {
   Address,
@@ -16,34 +17,22 @@ import {
   SectionEnd,
   Icon,
 } from "./InfoCard.styles.ts";
+import { Camelize } from "@/utils/camelize.js";
 
-interface Restaurant {
-  name: string;
-  icon: string;
-  photos: string[];
-  address: string;
-  isOpenNow: boolean;
-  rating: number;
-  isClosedTemporarily: boolean;
+interface Props {
+  restaurant: Camelize<Result>;
 }
 
-interface RestaurantInfoCardProps {
-  restaurant: Restaurant;
-}
-
-export default function RestaurantInfoCard({
-  restaurant,
-}: RestaurantInfoCardProps) {
+export default function RestaurantInfoCard({ restaurant }: Props) {
   const {
-    name,
-    icon,
-    photos,
-    address,
-    isOpenNow,
     rating,
-    isClosedTemporarily,
+    vicinity,
+    photos,
+    icon,
+    name,
+    isclosedtemporarily,
+    isopennow,
   } = restaurant;
-
   const ratingArray = Array.from(new Array(Math.ceil(rating)));
   return (
     <RestaurantCard elevation={5}>
@@ -57,20 +46,20 @@ export default function RestaurantInfoCard({
             ))}
           </Rating>
           <SectionEnd>
-            {isClosedTemporarily && (
+            {isclosedtemporarily && (
               <Text variant="error" style={{ color: "red" }}>
                 CLOSED TEMPORARILY
               </Text>
             )}
             <Spacer position="left" size="large">
-              {isOpenNow && <SvgXml xml={open} width={20} height={20} />}
+              {isopennow && <SvgXml xml={open} width={20} height={20} />}
             </Spacer>
             <Spacer position="left" size="large">
               <Icon source={{ uri: icon }} />
             </Spacer>
           </SectionEnd>
         </Section>
-        <Address>{address}</Address>
+        <Address>{vicinity}</Address>
       </Info>
     </RestaurantCard>
   );

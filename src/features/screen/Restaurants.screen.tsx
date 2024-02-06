@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Searchbar } from "react-native-paper";
 import RestaurantInfoCard from "@/features/components/InfoCard.component";
 import styled from "styled-components/native";
 import Spacer from "@/components/spacer/Spacer";
 import { SafeArea } from "@/features/components/utility/SafeArea";
+import { RestaurantsContext } from "@/services/restaurants/restaurants.context";
+import { Camelize } from "@/utils/camelize";
+import { Result } from "@/services/restaurants/restaurant";
 
 const SearchBarContainer = styled.View`
   flex-grow: 0;
@@ -11,23 +14,12 @@ const SearchBarContainer = styled.View`
 `;
 
 const RestaurantsList = styled.FlatList`
-  padding: 16px;
+  padding: 0 16px;
 `;
-
-const defaultRestaurant = {
-  name: "Some Restaurant",
-  icon: "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
-  photos: [
-    "https://www.foodiesfeed.com/wp-content/uploads/2019/06/top-view-for-box-of-2-burgers-home-made-600x899.jpg",
-  ],
-  address: "100 some random street",
-  isOpenNow: true,
-  rating: 4,
-  isClosedTemporarily: true,
-};
 
 export default function RestaurantScreens() {
   const [searchQuery, setSearchQuery] = useState("");
+  const { restaurants, isLoading, error } = useContext(RestaurantsContext);
 
   return (
     <SafeArea>
@@ -39,12 +31,15 @@ export default function RestaurantScreens() {
         />
       </SearchBarContainer>
       <RestaurantsList
-        data={[{ name: "1" }, { name: "2" }, { name: "3" }, { name: "4" }]}
-        renderItem={({ item }) => (
-          <Spacer position="bottom" size="large">
-            <RestaurantInfoCard restaurant={defaultRestaurant} />
-          </Spacer>
-        )}
+        data={restaurants}
+        renderItem={(props) => {
+          const item = props.item as Camelize<Result>;
+          return (
+            <Spacer position="bottom" size="large">
+              <RestaurantInfoCard restaurant={item} />
+            </Spacer>
+          );
+        }}
         keyExtractor={(item: any) => item.name}
       />
     </SafeArea>

@@ -16,6 +16,7 @@
     "@expo/webpack-config": "^19.0.1",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/native": "^6.1.9",
+    "camelize": "^1.0.1",
     "expo": "~50.0.5",
     "expo-font": "~11.10.2",
     "expo-status-bar": "~1.11.1",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@types/camelize": "^1.0.0",
     "@types/react": "^18.2.52",
     "@types/react-dom": "^18.0.10",
     "@types/react-native": "^0.73.0",

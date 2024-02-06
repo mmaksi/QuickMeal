@@ -16,6 +16,7 @@ import {
 } from "@expo-google-fonts/oswald";
 import { MaterialIcons } from "@expo/vector-icons";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import { RestaurantsContextProvider } from "@/services/restaurants/restaurants.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -49,44 +50,46 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={{
-            headerShown: false,
-            tabBarActiveTintColor: "#FFBC11",
-            tabBarInactiveTintColor: "grey",
-          }}
-        >
-          <Tab.Screen
-            name="Restaurants"
-            component={RestaurantScreens}
-            options={{
-              tabBarIcon: ({ color }) => (
-                <MaterialIcons name="restaurant" size={28} color={color} />
-              ),
+      <RestaurantsContextProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={{
+              headerShown: false,
+              tabBarActiveTintColor: "#FFBC11",
+              tabBarInactiveTintColor: "grey",
             }}
-          />
-          <Tab.Screen
-            name="Map"
-            component={Map}
-            options={{
-              tabBarIcon: ({ color }) => (
-                <MaterialIcons name="map" size={28} color={color} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Settings"
-            component={Settings}
-            options={{
-              tabBarIcon: ({ color }) => (
-                <MaterialIcons name="settings" size={28} color={color} />
-              ),
-            }}
-          />
-        </Tab.Navigator>
-        <ExpoStatusBar style="auto" />
-      </NavigationContainer>
+          >
+            <Tab.Screen
+              name="Restaurants"
+              component={RestaurantScreens}
+              options={{
+                tabBarIcon: ({ color }) => (
+                  <MaterialIcons name="restaurant" size={28} color={color} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Map"
+              component={Map}
+              options={{
+                tabBarIcon: ({ color }) => (
+                  <MaterialIcons name="map" size={28} color={color} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Settings"
+              component={Settings}
+              options={{
+                tabBarIcon: ({ color }) => (
+                  <MaterialIcons name="settings" size={28} color={color} />
+                ),
+              }}
+            />
+          </Tab.Navigator>
+          <ExpoStatusBar style="auto" />
+        </NavigationContainer>
+      </RestaurantsContextProvider>
     </ThemeProvider>
   );
 }
