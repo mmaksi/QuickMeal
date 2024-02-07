@@ -8,6 +8,8 @@ import { Camelize } from "@/utils/camelize";
 import { Result } from "@/services/restaurants/restaurant";
 import { ActivityIndicator } from "react-native";
 import { Search } from "../components/search.component";
+import { NavigationProp, ParamListBase } from "@react-navigation/native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const RestaurantsList = styled.FlatList`
   padding: 0 16px;
@@ -20,7 +22,11 @@ const Loading = styled.View`
   z-index: 1;
 `;
 
-export default function RestaurantScreens() {
+type Props = {
+  navigation: NavigationProp<ParamListBase>;
+};
+
+export default function RestaurantScreens({ navigation }: Props) {
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
 
   return (
@@ -38,9 +44,13 @@ export default function RestaurantScreens() {
           renderItem={(props) => {
             const item = props.item as Camelize<Result>;
             return (
-              <Spacer key={item.name} position="bottom" size="large">
-                <RestaurantInfoCard restaurant={item} />
-              </Spacer>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("RestaurantDetail")}
+              >
+                <Spacer key={item.name} position="bottom" size="large">
+                  <RestaurantInfoCard restaurant={item} />
+                </Spacer>
+              </TouchableOpacity>
             );
           }}
           keyExtractor={(item: any) => item.name}
