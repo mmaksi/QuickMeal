@@ -33,16 +33,16 @@ export default function RestaurantInfoCard({ restaurant }: Props) {
     isclosedtemporarily,
     isopennow,
   } = restaurant;
-  const ratingArray = Array.from(new Array(Math.ceil(rating)));
+  const ratingArray = Array.from(new Array(4));
   return (
     <RestaurantCard elevation={5}>
-      <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+      <RestaurantCardCover source={{ uri: photos[0] }} />
       <Info>
         <Text variant="label">{name}</Text>
         <Section>
           <Rating>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} width={20} height={20} />
+            {ratingArray.map((_, index) => (
+              <SvgXml key={index} xml={star} width={20} height={20} />
             ))}
           </Rating>
           <SectionEnd>

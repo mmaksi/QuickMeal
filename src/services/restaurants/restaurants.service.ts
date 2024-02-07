@@ -3,7 +3,7 @@ import camelize from "camelize";
 import { PlacesResponse, Result } from "./restaurant";
 
 export const restaurantsRequest = (
-  location = "37.7749295,-122.4194155"
+  location: string
 ): Promise<PlacesResponse> => {
   return new Promise((resolve, reject) => {
     const mock = mocks[location] as PlacesResponse;
@@ -20,6 +20,7 @@ export const restaurantsTransform = ({ results }: PlacesResponse) => {
     return {
       ...restaurant,
       photos,
+      address: restaurant.vicinity,
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
       isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
     };

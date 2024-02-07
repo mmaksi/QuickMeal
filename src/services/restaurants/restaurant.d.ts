@@ -44,6 +44,7 @@ export interface Result {
   types: string[];
   user_ratings_total: number;
   vicinity: string;
+  address: string;
   price_level?: number;
   isOpenNow: boolean;
   isClosedTemporarily: boolean;

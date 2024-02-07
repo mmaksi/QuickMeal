@@ -1,10 +1,17 @@
-import React, { createContext, ReactNode, useEffect, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import {
   restaurantsRequest,
   restaurantsTransform,
 } from "./restaurants.service";
 import { Result } from "./restaurant";
 import { Camelize } from "@/utils/camelize";
+import { LocationsContext } from "../location/locations.context";
 
 interface RestaurantsContextType {
   restaurants: Camelize<Result[]> | undefined[];
@@ -28,25 +35,29 @@ export const RestaurantsContextProvider = ({ children }: Props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchRestaurants = () => {
+  const { location } = useContext(LocationsContext);
+
+  const fetchRestaurants = async (loc: string) => {
     setIsLoading(true);
-    setTimeout(async () => {
-      try {
-        const results = await restaurantsRequest();
-        const transformed = restaurantsTransform(results);
-        setRestaurants(transformed);
-        setIsLoading(false);
-        setIsLoading(false);
-      } catch (error) {
-        setError(error);
-        setIsLoading(false);
-      }
-    }, 1500);
+    setRestaurants([]);
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const results = await restaurantsRequest(loc);
+      const transformed = restaurantsTransform(results);
+      setRestaurants(transformed);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
-    fetchRestaurants();
-  }, []);
+    if (location) {
+      const locationString = `${location.lat},${location.lng}`;
+      fetchRestaurants(locationString);
+    }
+  }, [location]);
 
   return (
     <RestaurantsContext.Provider value={{ restaurants, isLoading, error }}>

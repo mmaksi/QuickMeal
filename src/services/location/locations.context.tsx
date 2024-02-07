@@ -9,35 +9,38 @@ interface LocationsContextType {
   search: (searchKeyword?: string) => Promise<void>;
 }
 
-const LocationsContext = createContext<LocationsContextType>(
+export const LocationsContext = createContext<LocationsContextType>(
   {} as LocationsContextType
 );
 
 export const LocationContextProvider = ({ children }) => {
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState("San Francisco");
   const [location, setLocation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    onSearch();
-  }, []);
-
-  const onSearch = async (searchKeyword = "Antwerp") => {
+  const onSearch = async (searchKeyword: string) => {
+    console.log("object");
     setIsLoading(true);
-    setKeyword(keyword);
+    setKeyword(searchKeyword);
+  };
+
+  const setSearchLocation = async () => {
     try {
-      const locationInfo = await locationRequest(
-        searchKeyword.toLocaleLowerCase()
-      );
-      const result = locationTransform(locationInfo);
-      setLocation(result);
+      const locationInfo = await locationRequest(keyword.toLocaleLowerCase());
+      const locationResult = locationTransform(locationInfo);
+      setLocation(locationResult);
     } catch (error) {
       setError(error);
     } finally {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!keyword.length) return;
+    setSearchLocation();
+  }, [keyword]);
 
   return (
     <LocationsContext.Provider
