@@ -5,7 +5,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Text } from "react-native";
 
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
-import { SafeArea } from "@/features/components/utility/SafeArea";
+import { SafeArea } from "@/features/restaurants/components/utility/SafeArea";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "@/features/map/screens/map.screen";
 

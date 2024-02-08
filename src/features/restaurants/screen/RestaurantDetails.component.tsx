@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-import { SafeArea } from "@/features/components/utility/SafeArea";
-import RestaurantInfoCard from "@/features/components/InfoCard.component";
+import { SafeArea } from "@/features/restaurants/components/utility/SafeArea";
+import RestaurantInfoCard from "@/features/restaurants/components/InfoCard.component";
 import { ScrollView } from "react-native-gesture-handler";
 import { List } from "react-native-paper";
 

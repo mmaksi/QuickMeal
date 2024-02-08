@@ -21,7 +21,6 @@ export const LocationContextProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   const onSearch = async (searchKeyword: string) => {
-    console.log("object");
     setIsLoading(true);
     setKeyword(searchKeyword);
   };

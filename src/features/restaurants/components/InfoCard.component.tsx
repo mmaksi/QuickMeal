@@ -1,10 +1,10 @@
 import { SvgXml } from "react-native-svg";
 
-import star from "../../../assets/star.ts";
-import open from "../../../assets/open.ts";
+import star from "assets/star.ts";
+import open from "assets/open.ts";
 
-import Spacer from "../../components/spacer/Spacer.tsx";
-import Text from "../../components/typography/Text.ts";
+import Spacer from "@/components/spacer/Spacer.tsx";
+import Text from "@/components/typography/Text.ts";
 import { Result } from "@/services/restaurants/restaurant";
 
 import {

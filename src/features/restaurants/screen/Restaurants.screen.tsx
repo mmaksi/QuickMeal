@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
-import RestaurantInfoCard from "@/features/components/InfoCard.component";
+import React, { useContext } from "react";
+import RestaurantInfoCard from "@/features/restaurants/components/InfoCard.component";
 import styled from "styled-components/native";
 import Spacer from "@/components/spacer/Spacer";
-import { SafeArea } from "@/features/components/utility/SafeArea";
+import { SafeArea } from "@/features/restaurants/components/utility/SafeArea";
 import { RestaurantsContext } from "@/services/restaurants/restaurants.context";
 import { Camelize } from "@/utils/camelize";
 import { Result } from "@/services/restaurants/restaurant";
 import { ActivityIndicator } from "react-native";
-import { Search } from "../components/search.component";
+import { Search } from "@/features/restaurants/components/search.component";
 import { NavigationProp, ParamListBase } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 

@@ -4,11 +4,11 @@ import {
   createStackNavigator,
   TransitionPresets,
 } from "@react-navigation/stack";
-import RestaurantScreens from "@/features/screen/Restaurants.screen";
+import RestaurantScreens from "@/features/restaurants/screen/Restaurants.screen";
 import { Text } from "react-native-paper";
 import { Result } from "@/services/restaurants/restaurant";
 import { Camelize } from "@/utils/camelize";
-import { RestaurantDetailScreen } from "@/features/screen/RestaurantDetails.component";
+import { RestaurantDetailScreen } from "@/features/restaurants/screen/RestaurantDetails.component";
 
 export type RootStackParamList = {
   Restaurants: undefined;
