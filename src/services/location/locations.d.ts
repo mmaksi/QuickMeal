@@ -3,7 +3,7 @@ interface Location {
   lng: number;
 }
 
-interface Viewport {
+export interface Viewport {
   northeast: Location;
   southwest: Location;
 }

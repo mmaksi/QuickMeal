@@ -7,6 +7,7 @@ import { Text } from "react-native";
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 import { SafeArea } from "@/features/components/utility/SafeArea";
 import { RestaurantsNavigator } from "./restaurants.navigator";
+import { MapScreen } from "@/features/map/screens/map.screen";
 
 const Tab = createBottomTabNavigator();
 
@@ -41,7 +42,7 @@ export const AppNavigator = () => (
       />
       <Tab.Screen
         name="Map"
-        component={Map}
+        component={MapScreen}
         options={{
           tabBarIcon: ({ color }) => (
             <MaterialIcons name="map" size={28} color={color} />

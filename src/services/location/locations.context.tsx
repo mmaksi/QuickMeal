@@ -1,9 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import { locationRequest, locationTransform } from "./locations.service";
+import { Viewport } from "./locations";
 
 interface LocationsContextType {
   keyword: string;
-  location: { lat: number; lng: number };
+  location: { lat: number; lng: number; viewport: Viewport };
   isLoading: boolean;
   error: any;
   search: (searchKeyword?: string) => Promise<void>;
