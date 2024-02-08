@@ -45,7 +45,9 @@ export default function RestaurantScreens({ navigation }: Props) {
             const item = props.item as Camelize<Result>;
             return (
               <TouchableOpacity
-                onPress={() => navigation.navigate("RestaurantDetail")}
+                onPress={() =>
+                  navigation.navigate("RestaurantDetail", { restaurant: item })
+                }
               >
                 <Spacer key={item.name} position="bottom" size="large">
                   <RestaurantInfoCard restaurant={item} />

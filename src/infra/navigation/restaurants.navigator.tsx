@@ -6,10 +6,13 @@ import {
 } from "@react-navigation/stack";
 import RestaurantScreens from "@/features/screen/Restaurants.screen";
 import { Text } from "react-native-paper";
+import { Result } from "@/services/restaurants/restaurant";
+import { Camelize } from "@/utils/camelize";
+import { RestaurantDetailScreen } from "@/features/screen/RestaurantDetails.component";
 
 export type RootStackParamList = {
   Restaurants: undefined;
-  RestaurantDetail: undefined;
+  RestaurantDetail: { restaurant: Camelize<Result> };
 };
 
 const RestaurantStack = createStackNavigator<RootStackParamList>();
@@ -29,7 +32,7 @@ export const RestaurantsNavigator = () => {
       />
       <RestaurantStack.Screen
         name="RestaurantDetail"
-        component={() => <Text>Restaurant Detail</Text>}
+        component={RestaurantDetailScreen}
       />
     </RestaurantStack.Navigator>
   );
