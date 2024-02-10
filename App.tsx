@@ -14,6 +14,7 @@ import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { RestaurantsContextProvider } from "@/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "@/services/location/locations.context";
 import { Navigation } from "@/infra/navigation";
+import { FavouritesContextProvider } from "@/services/favourites/favourites.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,11 +32,13 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <LocationContextProvider>
-        <RestaurantsContextProvider>
-          <Navigation />
-        </RestaurantsContextProvider>
-      </LocationContextProvider>
+      <FavouritesContextProvider>
+        <LocationContextProvider>
+          <RestaurantsContextProvider>
+            <Navigation />
+          </RestaurantsContextProvider>
+        </LocationContextProvider>
+      </FavouritesContextProvider>
     </ThemeProvider>
   );
 }
