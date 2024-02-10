@@ -1,6 +1,6 @@
 # QuickMeal
 
-Mobile application for iOS and Android to look for restaurants on the map and check their services.
+Mobile application for iOS and Android to look for restaurants on the map and check their details and services, add to favourites and perform payment using Stripe.
 
 ## App Features
 
@@ -11,6 +11,8 @@ Mobile application for iOS and Android to look for restaurants on the map and ch
 🟣 Google/Apple Maps using React Native Maps
 
 🟣 Geocoding using Google API
+
+🟣 Navigation between different tabs and sub-tabs
 
 ## App Assets:
 

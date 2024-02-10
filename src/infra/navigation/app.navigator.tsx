@@ -31,6 +31,7 @@ export const AppNavigator = () => (
         tabBarInactiveTintColor: "grey",
       }}
     >
+      {/* Every component in the stack will receive a navigation prop */}
       <Tab.Screen
         name="Restaurants"
         component={RestaurantsNavigator}

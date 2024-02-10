@@ -9,13 +9,19 @@ import { Text } from "react-native-paper";
 import { Result } from "@/services/restaurants/restaurant";
 import { Camelize } from "@/utils/camelize";
 import { MarkerCallout } from "../components/mapCallout.component";
+import { NavigationProp } from "@react-navigation/native";
+import { RootStackParamList } from "@/infra/navigation/restaurants.navigator";
 
 const Map = styled(MapView)`
   height: 100%;
   width: 100%;
 `;
 
-export const MapScreen = () => {
+type Props = {
+  navigation: NavigationProp<RootStackParamList>;
+};
+
+export const MapScreen = ({ navigation }: Props) => {
   const { location } = useContext(LocationsContext);
   const { restaurants } = useContext(RestaurantsContext) as any;
 
@@ -51,7 +57,7 @@ export const MapScreen = () => {
                 longitude: restaurant.geometry.location.lng,
               }}
             >
-              <MarkerCallout restaurant={restaurant} />
+              <MarkerCallout restaurant={restaurant} navigation={navigation} />
             </MapMarker>
           );
         })}

@@ -8,8 +8,9 @@ import { Camelize } from "@/utils/camelize";
 import { Result } from "@/services/restaurants/restaurant";
 import { ActivityIndicator } from "react-native";
 import { Search } from "@/features/restaurants/components/search.component";
-import { NavigationProp, ParamListBase } from "@react-navigation/native";
+import { NavigationProp } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { RootStackParamList } from "@/infra/navigation/restaurants.navigator";
 
 const RestaurantsList = styled.FlatList`
   padding: 0 16px;
@@ -23,7 +24,7 @@ const Loading = styled.View`
 `;
 
 type Props = {
-  navigation: NavigationProp<ParamListBase>;
+  navigation: NavigationProp<RootStackParamList>;
 };
 
 export default function RestaurantScreens({ navigation }: Props) {
