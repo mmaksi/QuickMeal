@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { Theme } from "../../features/components/InfoCard.styles";
+import { Theme } from "@/features/restaurants/components/InfoCard.styles";
 
 interface TextProps {
   variant?: "body" | "label" | "caption" | "error" | "hint";

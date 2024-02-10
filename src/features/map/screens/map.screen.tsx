@@ -1,12 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
-import MapView, { Marker } from "react-native-maps";
+import MapView, { MapCallout, MapMarker } from "react-native-maps";
 
 import { Search } from "@/features/map/components/search.component";
 import styled from "styled-components";
 import { LocationsContext } from "@/services/location/locations.context";
 import { RestaurantsContext } from "@/services/restaurants/restaurants.context";
-import { Camelize } from "@/utils/camelize";
+import { Text } from "react-native-paper";
 import { Result } from "@/services/restaurants/restaurant";
+import { Camelize } from "@/utils/camelize";
+import { MarkerCallout } from "../components/mapCallout.component";
 
 const Map = styled(MapView)`
   height: 100%;
@@ -36,11 +38,22 @@ export const MapScreen = () => {
           latitude: lat,
           longitude: lng,
           latitudeDelta: latDelta,
-          longitudeDelta: 0.2,
+          longitudeDelta: 0.02,
         }}
       >
-        {restaurants.map((restaurant) => {
-          return null;
+        {restaurants.map((restaurant: Camelize<Result>) => {
+          return (
+            <MapMarker
+              key={restaurant.name}
+              title={restaurant.name}
+              coordinate={{
+                latitude: restaurant.geometry.location.lat,
+                longitude: restaurant.geometry.location.lng,
+              }}
+            >
+              <MarkerCallout restaurant={restaurant} />
+            </MapMarker>
+          );
         })}
       </Map>
     </>
