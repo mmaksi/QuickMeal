@@ -1,8 +1,7 @@
 import "react-native-gesture-handler";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { ThemeProvider } from "styled-components/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { theme } from "@/infra/theme";
 
@@ -15,10 +14,24 @@ import { RestaurantsContextProvider } from "@/services/restaurants/restaurants.c
 import { LocationContextProvider } from "@/services/location/locations.context";
 import { Navigation } from "@/infra/navigation";
 import { FavouritesContextProvider } from "@/services/favourites/favourites.context";
-
-const Tab = createBottomTabNavigator();
+import { emailSignIn } from "@/services/authentication/firebase.service";
 
 export default function App() {
+  const [isAuthenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const signInUser = async () => {
+      try {
+        const isUser = await emailSignIn("email@mark.io", "password");
+        if (isUser) setAuthenticated(true);
+      } catch (error) {
+        console.error("Error signing in:", error);
+      }
+    };
+
+    signInUser();
+  }, []);
+
   const [oswald] = useOswald({
     Oswald_400Regular,
   });
