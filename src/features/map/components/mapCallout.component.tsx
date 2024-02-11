@@ -18,6 +18,6 @@ export const MarkerCallout = ({ restaurant, navigation }: Props) => (
   <MapCallout
     onPress={() => navigation.navigate("RestaurantDetail", { restaurant })}
   >
-    <CompactRestaurantInfo restaurant={restaurant} />
+    <CompactRestaurantInfo restaurant={restaurant} isMap={true} />
   </MapCallout>
 );

@@ -1,6 +1,7 @@
 import { Camelize } from "@/utils/camelize";
-import React, { ReactNode, createContext, useState } from "react";
+import React, { ReactNode, createContext, useEffect, useState } from "react";
 import { Result } from "../restaurants/restaurant";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const FavouritesContext = createContext<FavouritesContextType>(
   {} as FavouritesContextType
@@ -19,6 +20,26 @@ interface FavouritesContextType {
 export const FavouritesContextProvider = ({ children }: Props) => {
   const [favourites, setFavourites] = useState<Camelize<Result>[]>([]);
 
+  const saveFavourites = async (value: Camelize<Result>[]) => {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem("@favourites", jsonValue);
+    } catch (e) {
+      console.log("error storing", e);
+    }
+  };
+
+  const loadFavourites = async () => {
+    try {
+      const value = await AsyncStorage.getItem("@favourites");
+      if (value !== null) {
+        setFavourites(JSON.parse(value));
+      }
+    } catch (e) {
+      console.log("error loading", e);
+    }
+  };
+
   const add = (restaurant: Camelize<Result>) => {
     setFavourites([...favourites, restaurant]);
   };
@@ -29,6 +50,14 @@ export const FavouritesContextProvider = ({ children }: Props) => {
     );
     setFavourites(newFavourites);
   };
+
+  useEffect(() => {
+    loadFavourites();
+  }, []);
+
+  useEffect(() => {
+    saveFavourites(favourites);
+  }, [favourites]);
 
   return (
     <FavouritesContext.Provider

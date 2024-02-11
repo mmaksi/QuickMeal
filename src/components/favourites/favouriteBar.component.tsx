@@ -37,7 +37,7 @@ export const FavouritesBar = ({ favourites, navigation }: Props) => {
                   })
                 }
               >
-                <CompactRestaurantInfo restaurant={restaurant} />
+                <CompactRestaurantInfo restaurant={restaurant} isMap={false} />
               </TouchableOpacity>
             </Spacer>
           );
