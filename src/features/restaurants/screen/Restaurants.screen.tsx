@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import RestaurantInfoCard from "@/features/restaurants/components/InfoCard.component";
 import styled from "styled-components/native";
 import Spacer from "@/components/spacer/Spacer";
@@ -11,6 +11,8 @@ import { Search } from "@/features/restaurants/components/search.component";
 import { NavigationProp } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { RootStackParamList } from "@/infra/navigation/restaurants.navigator";
+import { FavouritesBar } from "@/components/favourites/favouriteBar.component";
+import { FavouritesContext } from "@/services/favourites/favourites.context";
 
 const RestaurantsList = styled.FlatList`
   padding: 0 16px;
@@ -29,7 +31,8 @@ type Props = {
 
 export default function RestaurantScreens({ navigation }: Props) {
   const { restaurants, isLoading, error } = useContext(RestaurantsContext);
-
+  const [isToggled, setIsToggled] = useState(false);
+  const { favourites } = useContext(FavouritesContext);
   return (
     <>
       {isLoading && (
@@ -39,7 +42,13 @@ export default function RestaurantScreens({ navigation }: Props) {
       )}
 
       <SafeArea>
-        <Search />
+        <Search
+          isFavouritesToggled={isToggled}
+          onFavouritesToggle={() => setIsToggled(!isToggled)}
+        />
+        {isToggled && (
+          <FavouritesBar favourites={favourites} navigation={navigation} />
+        )}
         <RestaurantsList
           data={restaurants}
           renderItem={(props) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { useTheme } from "styled-components/native";
-import { Theme } from "../../features/components/InfoCard.styles";
+import { Theme } from "@/features/restaurants/components/InfoCard.styles";
 
 interface SpacerProps {
   position?: "top" | "left" | "right" | "bottom";
