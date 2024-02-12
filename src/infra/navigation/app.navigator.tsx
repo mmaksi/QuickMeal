@@ -16,11 +16,6 @@ const Settings = () => (
     <Text>Settings</Text>
   </SafeArea>
 );
-const Map = () => (
-  <SafeArea>
-    <Text>Map</Text>
-  </SafeArea>
-);
 
 export const AppNavigator = () => (
   <NavigationContainer>
@@ -31,7 +26,7 @@ export const AppNavigator = () => (
         tabBarInactiveTintColor: "grey",
       }}
     >
-      {/* Every component in the stack will receive a navigation prop */}
+      {/* Every Screen component receives a navigation prop */}
       <Tab.Screen
         name="Restaurants"
         component={RestaurantsNavigator}

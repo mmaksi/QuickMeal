@@ -1,18 +1,24 @@
-import React, { useContext, useState } from "react";
-import RestaurantInfoCard from "@/features/restaurants/components/InfoCard.component";
-import styled from "styled-components/native";
-import Spacer from "@/components/spacer/Spacer";
-import { SafeArea } from "@/features/restaurants/components/utility/SafeArea";
-import { RestaurantsContext } from "@/services/restaurants/restaurants.context";
-import { Camelize } from "@/utils/camelize";
-import { Result } from "@/services/restaurants/restaurant";
-import { ActivityIndicator } from "react-native";
-import { Search } from "@/features/restaurants/components/search.component";
-import { NavigationProp } from "@react-navigation/native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { NavigationProp } from "@react-navigation/native";
+import React, { useContext, useState } from "react";
+import { ActivityIndicator } from "react-native";
+
+import styled from "styled-components/native";
+
 import { RootStackParamList } from "@/infra/navigation/restaurants.navigator";
-import { FavouritesBar } from "@/components/favourites/favouriteBar.component";
+
+import { RestaurantsContext } from "@/services/restaurants/restaurants.context";
 import { FavouritesContext } from "@/services/favourites/favourites.context";
+import { Result } from "@/services/restaurants/restaurant";
+
+import RestaurantInfoCard from "@/features/restaurants/components/InfoCard.component";
+import { SafeArea } from "@/features/restaurants/components/utility/SafeArea";
+import { Search } from "@/features/restaurants/components/search.component";
+
+import { FavouritesBar } from "@/components/favourites/favouriteBar.component";
+import Spacer from "@/components/spacer/Spacer";
+
+import { Camelize } from "@/utils/camelize";
 
 const RestaurantsList = styled.FlatList`
   padding: 0 16px;

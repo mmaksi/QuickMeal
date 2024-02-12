@@ -1,11 +1,16 @@
 import { ScrollView, TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
-import Spacer from "@/components/spacer/Spacer";
-import { CompactRestaurantInfo } from "@/components/restaurant/CompactRestaurantInfo";
-import Text from "@/components/typography/Text";
 import { NavigationProp } from "@react-navigation/native";
+
+import styled from "styled-components/native";
+
 import { RootStackParamList } from "@/infra/navigation/restaurants.navigator";
+
+import { CompactRestaurantInfo } from "@/components/restaurant/CompactRestaurantInfo";
+import Spacer from "@/components/spacer/Spacer";
+import Text from "@/components/typography/Text";
+
 import { Result } from "@/services/restaurants/restaurant";
+
 import { Camelize } from "@/utils/camelize";
 
 const FavouritesWrapper = styled.View`

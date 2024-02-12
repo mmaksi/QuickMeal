@@ -1,6 +1,10 @@
-import styled from "styled-components/native";
-import { Searchbar } from "react-native-paper";
 import { useContext, useEffect, useState } from "react";
+import { GestureResponderEvent } from "react-native";
+
+import { Searchbar } from "react-native-paper";
+
+import styled from "styled-components/native";
+
 import { LocationsContext } from "@/services/location/locations.context";
 
 const SearchBarContainer = styled.View`
@@ -10,7 +14,7 @@ const SearchBarContainer = styled.View`
 
 interface Props {
   isFavouritesToggled: boolean;
-  onFavouritesToggle: any;
+  onFavouritesToggle: (e: GestureResponderEvent) => void;
 }
 
 export const Search = ({ isFavouritesToggled, onFavouritesToggle }: Props) => {
