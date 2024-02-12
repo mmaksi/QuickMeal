@@ -2,6 +2,10 @@
 
 Mobile application for iOS and Android to allow authenticated users to look for restaurants on the map and check their details and services, add to favourites and perform payment using Stripe.
 
+![](./screenshots/2.png)
+
+![](./screenshots/2.png)
+
 ## App Features
 
 🟣 Scalable design structure that allows for instant style changes for colors and fonts and spacing on the entire application. Thanks to Styled Components and Themes.
