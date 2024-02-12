@@ -4,7 +4,7 @@ Mobile application for iOS and Android to allow authenticated users to look for 
 
 ![](./screenshots/2.png)
 
-![](./screenshots/2.png)
+![](./screenshots/3.png)
 
 ## App Features
 
