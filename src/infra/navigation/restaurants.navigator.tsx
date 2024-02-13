@@ -10,7 +10,7 @@ import { Camelize } from "@/utils/camelize";
 import { RestaurantDetailScreen } from "@/features/restaurants/screen/RestaurantDetails.component";
 
 export type RootStackParamList = {
-  Restaurants: undefined;
+  RestaurantsList: undefined;
   RestaurantDetail: { restaurant: Camelize<Result> };
 };
 

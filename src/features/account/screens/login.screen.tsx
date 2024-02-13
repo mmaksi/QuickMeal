@@ -1,3 +1,5 @@
+import { ActivityIndicator } from "react-native-paper";
+
 import Spacer from "@/components/spacer/Spacer";
 import Text from "@/components/typography/Text";
 import {
@@ -12,11 +14,19 @@ import {
 import { AuthenticationContext } from "@/services/authentication/firebase.context";
 import { useContext, useState } from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { colors } from "@/infra/theme/colors";
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { onLogin, error, user } = useContext(AuthenticationContext);
+  const { onLogin, error, setError, isLoading } = useContext(
+    AuthenticationContext
+  );
+
+  const returnHome = () => {
+    setError("");
+    navigation.goBack();
+  };
 
   return (
     <AccountBackground>
@@ -46,17 +56,22 @@ export const LoginScreen = ({ navigation }) => {
           </ErrorContainer>
         )}
         <Spacer size="large">
-          <AuthButton
-            icon="lock-open-outline"
-            mode="contained"
-            onPress={() => onLogin(email, password)}
-          >
-            Login
-          </AuthButton>
+          {isLoading && (
+            <ActivityIndicator animating={true} color={colors.brand.primary} />
+          )}
+          {!isLoading && (
+            <AuthButton
+              icon="lock-open-outline"
+              mode="contained"
+              onPress={() => onLogin(email, password)}
+            >
+              Login
+            </AuthButton>
+          )}
         </Spacer>
       </AccountContainer>
       <Spacer size="large">
-        <BackButton mode="contained" onPress={() => navigation.goBack()}>
+        <BackButton mode="contained" onPress={returnHome}>
           Back
         </BackButton>
       </Spacer>

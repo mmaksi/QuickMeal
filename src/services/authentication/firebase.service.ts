@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { getApp, getApps, initializeApp } from "firebase/app";
 import ReactNativeAsyncStorage from "@react-native-async-storage/async-storage";
 
 import {
@@ -8,6 +8,9 @@ import {
   GoogleAuthProvider,
   User,
   getReactNativePersistence,
+  createUserWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -19,9 +22,9 @@ const firebaseConfig = {
   appId: "1:585625699192:web:c03a93954aa0e31857fe8d",
 };
 
-const app = initializeApp(firebaseConfig);
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-const auth = initializeAuth(app, {
+export const auth = initializeAuth(app, {
   persistence: getReactNativePersistence(ReactNativeAsyncStorage),
 });
 
@@ -41,3 +44,31 @@ export const emailSignIn = async (
     return error.toString();
   }
 };
+
+export const emailSignup = async (
+  email: string,
+  password: string,
+  repeatedPassword: string
+) => {
+  if (password !== repeatedPassword) {
+    return "Passwords don't match. Please try again.";
+  }
+  try {
+    const userCredentials = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredentials.user;
+    return user;
+  } catch (error) {
+    return error.toString();
+  }
+};
+
+export const signOutUser = async () => {
+  await signOut(auth);
+};
+
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);

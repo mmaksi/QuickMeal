@@ -1,21 +1,25 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import React, { useContext } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Text } from "react-native";
+import { Button, Text } from "react-native";
 
 import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
 import { SafeArea } from "@/features/restaurants/components/utility/SafeArea";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "@/features/map/screens/map.screen";
+import { AuthenticationContext } from "@/services/authentication/firebase.context";
 
 const Tab = createBottomTabNavigator();
 
-const Settings = () => (
-  <SafeArea>
-    <Text>Settings</Text>
-  </SafeArea>
-);
+const Settings = () => {
+  const { onLogout } = useContext(AuthenticationContext);
+  return (
+    <SafeArea>
+      <Text>Settings</Text>
+      <Button title="logout" onPress={() => onLogout()} />
+    </SafeArea>
+  );
+};
 
 export const AppNavigator = () => (
   <>
