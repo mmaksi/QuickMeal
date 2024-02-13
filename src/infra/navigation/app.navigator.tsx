@@ -18,7 +18,7 @@ const Settings = () => (
 );
 
 export const AppNavigator = () => (
-  <NavigationContainer>
+  <>
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
@@ -56,5 +56,5 @@ export const AppNavigator = () => (
       />
     </Tab.Navigator>
     <ExpoStatusBar style="auto" />
-  </NavigationContainer>
+  </>
 );

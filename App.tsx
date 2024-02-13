@@ -14,23 +14,10 @@ import { RestaurantsContextProvider } from "@/services/restaurants/restaurants.c
 import { LocationContextProvider } from "@/services/location/locations.context";
 import { Navigation } from "@/infra/navigation";
 import { FavouritesContextProvider } from "@/services/favourites/favourites.context";
-import { emailSignIn } from "@/services/authentication/firebase.service";
+import { AuthContextProvider } from "@/services/authentication/firebase.context";
 
 export default function App() {
   const [isAuthenticated, setAuthenticated] = useState(false);
-
-  useEffect(() => {
-    const signInUser = async () => {
-      try {
-        const isUser = await emailSignIn("email@mark.io", "password");
-        if (isUser) setAuthenticated(true);
-      } catch (error) {
-        console.error("Error signing in:", error);
-      }
-    };
-
-    signInUser();
-  }, []);
 
   const [oswald] = useOswald({
     Oswald_400Regular,
@@ -45,13 +32,15 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <FavouritesContextProvider>
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <Navigation />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
-      </FavouritesContextProvider>
+      <AuthContextProvider>
+        <FavouritesContextProvider>
+          <LocationContextProvider>
+            <RestaurantsContextProvider>
+              <Navigation />
+            </RestaurantsContextProvider>
+          </LocationContextProvider>
+        </FavouritesContextProvider>
+      </AuthContextProvider>
     </ThemeProvider>
   );
 }
