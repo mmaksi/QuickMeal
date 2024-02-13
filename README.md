@@ -4,21 +4,21 @@ Mobile application for iOS and Android to allow authenticated users to look for 
 
 ![](./screenshots/2.png)
 
-![](./screenshots/2.png)
+![](./screenshots/3.png)
 
 ## App Features
 
-🟣 Scalable design structure that allows for instant style changes for colors and fonts and spacing on the entire application. Thanks to Styled Components and Themes.
+🟡 Scalable design structure that allows for instant style changes for colors and fonts and spacing on the entire application. Thanks to Styled Components and Themes.
 
-🟣 React Context API
+🟡 React Context API
 
-🟣 Expo Async Storage
+🟡 Expo Async Storage
 
-🟣 Google/Apple Maps using React Native Maps
+🟡 Google/Apple Maps using React Native Maps
 
-🟣 Geocoding using Google API
+🟡 Geocoding using Google API
 
-🟣 Navigation between different tabs and sub-tabs
+🟡 Navigation between different tabs and sub-tabs
 
 ## App Assets:
 
