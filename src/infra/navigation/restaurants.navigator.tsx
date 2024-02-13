@@ -26,7 +26,7 @@ export const RestaurantsNavigator = () => {
     >
       {/* Every component in the stack will receive a navigation prop */}
       <RestaurantStack.Screen
-        name="Restaurants"
+        name="RestaurantsList"
         component={RestaurantScreens}
       />
       <RestaurantStack.Screen
