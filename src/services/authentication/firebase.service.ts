@@ -25,7 +25,10 @@ const auth = initializeAuth(app, {
   persistence: getReactNativePersistence(ReactNativeAsyncStorage),
 });
 
-export const emailSignIn = async (email: string, password: string) => {
+export const emailSignIn = async (
+  email: string,
+  password: string
+): Promise<User | string> => {
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
@@ -35,6 +38,6 @@ export const emailSignIn = async (email: string, password: string) => {
     const user = userCredential.user;
     return user;
   } catch (error) {
-    console.error(error);
+    return error.toString();
   }
 };

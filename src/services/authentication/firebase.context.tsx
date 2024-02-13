@@ -6,7 +6,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   user: User;
   isLoading: boolean;
-  error: null;
+  error: string;
   onLogin: (email: string, password: string) => Promise<void>;
 }
 
@@ -16,21 +16,31 @@ interface Props {
   children: ReactNode;
 }
 
+const errors = [
+  "auth/invalid-email",
+  "auth/missing-password",
+  "auth/missing-password",
+  "auth/invalid-credential",
+];
+
 export const AuthContextProvider = ({ children }: Props) => {
   const [user, setUser] = useState<User>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
 
   const onLogin = async (email: string, password: string) => {
     setIsLoading(true);
-    try {
-      const user = await emailSignIn(email, password);
-      setUser(user);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
+    const response = await emailSignIn(email, password);
+    if (typeof response !== "string") {
+      setUser(response);
+    } else {
+      for (let error of errors) {
+        if (response.includes(error)) {
+          setError("Invalid credentials. Please, try again.");
+        }
+      }
     }
+    setIsLoading(false);
   };
 
   const initialValue = {
