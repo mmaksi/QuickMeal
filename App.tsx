@@ -17,8 +17,6 @@ import { FavouritesContextProvider } from "@/services/favourites/favourites.cont
 import { AuthContextProvider } from "@/services/authentication/firebase.context";
 
 export default function App() {
-  const [isAuthenticated, setAuthenticated] = useState(false);
-
   const [oswald] = useOswald({
     Oswald_400Regular,
   });
@@ -33,13 +31,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <AuthContextProvider>
-        <FavouritesContextProvider>
-          <LocationContextProvider>
-            <RestaurantsContextProvider>
-              <Navigation />
-            </RestaurantsContextProvider>
-          </LocationContextProvider>
-        </FavouritesContextProvider>
+        <Navigation />
       </AuthContextProvider>
     </ThemeProvider>
   );
