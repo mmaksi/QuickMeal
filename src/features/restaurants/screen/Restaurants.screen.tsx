@@ -12,7 +12,7 @@ import { FavouritesContext } from "@/services/favourites/favourites.context";
 import { Result } from "@/services/restaurants/restaurant";
 
 import RestaurantInfoCard from "@/features/restaurants/components/InfoCard.component";
-import { SafeArea } from "@/features/restaurants/components/utility/SafeArea";
+import { SafeArea } from "@/components/utility/SafeArea";
 import { Search } from "@/features/restaurants/components/search.component";
 
 import { FavouritesBar } from "@/components/favourites/favouriteBar.component";

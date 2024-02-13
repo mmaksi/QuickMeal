@@ -3,7 +3,7 @@ import { List } from "react-native-paper";
 import React, { useState } from "react";
 
 import RestaurantInfoCard from "@/features/restaurants/components/InfoCard.component";
-import { SafeArea } from "@/features/restaurants/components/utility/SafeArea";
+import { SafeArea } from "@/components/utility/SafeArea";
 
 export const RestaurantDetailScreen = ({ route }) => {
   const { restaurant } = route.params;

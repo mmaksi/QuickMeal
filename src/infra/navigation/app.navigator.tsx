@@ -3,8 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Button, Text } from "react-native";
 
-import ExpoStatusBar from "expo-status-bar/build/ExpoStatusBar";
-import { SafeArea } from "@/features/restaurants/components/utility/SafeArea";
+import { SafeArea } from "@/components/utility/SafeArea";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "@/features/map/screens/map.screen";
 import { AuthenticationContext } from "@/services/authentication/firebase.context";
