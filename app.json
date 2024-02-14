@@ -32,6 +32,10 @@
             "node_modules/@expo-google-fonts//oswald/Oswald_400Regular.ttf",
             "node_modules/@expo-google-fonts/lato/Lato_400Regular.ttf"
           ]
+        },
+        "expo-camera",
+        {
+          "cameraPermission": "Allow QuickMeals to access your camera."
         }
       ]
     ]
