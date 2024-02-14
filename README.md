@@ -6,17 +6,23 @@ Mobile application for iOS and Android to allow authenticated users to look for 
 
 ![](./screenshots/3.png)
 
+# Local setup
+
+1. Clone the app to your system
+2. `npm install`
+3. `npm run start`
+
 ## App Features
 
-🟡 Scalable design structure that allows for instant style changes for colors and fonts and spacing on the entire application. Thanks to Styled Components and Themes.
+🟡 Scalable design structure for the brand identity that allows for instant style changes for colors and fonts and spacing on the entire application. Thanks to Styled Components and Themes.
 
 🟡 React Context API
 
 🟡 Expo Async Storage
 
-🟡 Google/Apple Maps using React Native Maps
+🟡 Firebase for user authentication
 
-🟡 Geocoding using Google API
+🟡 Google/Apple Maps using React Native Maps
 
 🟡 Navigation between different tabs and sub-tabs
 
@@ -24,8 +30,8 @@ Mobile application for iOS and Android to allow authenticated users to look for 
 
 - Expo Vector Icons
 - Expo Google Fonts
-- Styled Components for a custom brand styling
+- Styled Components for a custom brand identity styling
 
 ## 🛠️ Tech Stack:
 
-React Native, Expo, TypeScript, React Native Paper, Styled Components
+Expo, TypeScript, React Native, React Native Paper, Styled Components
