@@ -27,8 +27,6 @@ export const LoginScreen = ({ navigation }) => {
     navigation.goBack();
   };
 
-  console.log(error);
-
   return (
     <AccountBackground>
       <AccountCover />

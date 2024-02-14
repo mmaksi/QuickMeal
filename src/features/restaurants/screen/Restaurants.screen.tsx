@@ -20,6 +20,7 @@ import Spacer from "@/components/spacer/Spacer";
 
 import { Camelize } from "@/utils/camelize";
 import { RestaurantsList } from "@/features/restaurants/components/restaurantList.styles";
+import { FadeInView } from "@/components/animations/fade.animation";
 
 const Loading = styled.View`
   position: absolute;
@@ -63,7 +64,9 @@ export default function RestaurantScreens({ navigation }: Props) {
                 }
               >
                 <Spacer key={item.name} position="bottom" size="large">
-                  <RestaurantInfoCard restaurant={item} />
+                  <FadeInView>
+                    <RestaurantInfoCard restaurant={item} />
+                  </FadeInView>
                 </Spacer>
               </TouchableOpacity>
             );

@@ -34,7 +34,7 @@ export const FavouritesContextProvider = ({ children }: Props) => {
       const jsonValue = JSON.stringify(value);
       await AsyncStorage.setItem(`@favourites-${uid}`, jsonValue);
     } catch (e) {
-      console.log("error storing", e);
+      console.error("error storing", e);
     }
   };
 
@@ -45,7 +45,7 @@ export const FavouritesContextProvider = ({ children }: Props) => {
         setFavourites(JSON.parse(value));
       }
     } catch (e) {
-      console.log("error loading", e);
+      console.error("error loading", e);
     }
   };
 
