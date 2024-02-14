@@ -37,7 +37,6 @@ const Container = styled.View`
 `;
 
 const ControlsContainer = styled.View`
-  border: 2px red;
   justify-content: center;
   align-items: flex-end;
   margin-top: auto;
