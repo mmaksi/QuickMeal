@@ -30,7 +30,7 @@ export const AccountScreen = ({ navigation }) => {
           source={require("assets/watermelon.json")}
         />
       </AnimationWrapper>
-      <Title>Quick Meals</Title>
+      <Title>QuickMeal</Title>
       <AccountContainer>
         <AuthButton
           icon="login"

@@ -21,9 +21,6 @@
         "backgroundColor": "#ffffff"
       }
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
     "plugins": [
       [
         "expo-font",
@@ -35,7 +32,7 @@
         },
         "expo-camera",
         {
-          "cameraPermission": "Allow QuickMeals to access your camera."
+          "cameraPermission": "Allow QuickMeal to access your camera."
         }
       ]
     ]

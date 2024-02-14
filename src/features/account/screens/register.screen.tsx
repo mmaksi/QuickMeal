@@ -30,7 +30,7 @@ export const RegisterScreen = ({ navigation }) => {
   return (
     <AccountBackground>
       <AccountCover />
-      <Title>Quick Meal</Title>
+      <Title>QuickMeal</Title>
       <AccountContainer>
         <AuthInput
           label="E-mail"

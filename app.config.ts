@@ -2,8 +2,8 @@ import "ts-node/register";
 import { ExpoConfig } from "expo/config";
 
 const config: ExpoConfig = {
-  name: "my-app",
-  slug: "my-app",
+  name: "QuickMeal",
+  slug: "QuickMeal",
 };
 
 export default config;
