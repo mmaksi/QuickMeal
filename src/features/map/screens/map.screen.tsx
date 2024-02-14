@@ -17,11 +17,7 @@ const Map = styled(MapView)`
   width: 100%;
 `;
 
-type Props = {
-  navigation: NavigationProp<RootStackParamList>;
-};
-
-export const MapScreen = ({ navigation }: Props) => {
+export const MapScreen = ({ navigation }) => {
   const { location } = useContext(LocationsContext);
   const { restaurants } = useContext(RestaurantsContext) as any;
 

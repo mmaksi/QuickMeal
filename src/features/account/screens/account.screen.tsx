@@ -10,7 +10,7 @@ import {
 } from "@/features/account/components/account.styles";
 
 import LottieView from "lottie-react-native";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 export const AccountScreen = ({ navigation }) => {
   const animation = useRef<null>();

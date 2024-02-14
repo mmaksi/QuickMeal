@@ -58,6 +58,7 @@ export const AuthContextProvider = ({ children }: Props) => {
     const response = await emailSignIn(email, password);
     if (typeof response !== "string") {
       setUser(response);
+      setError("");
     } else {
       setError("Invalid credentials. Please, try again.");
     }
@@ -81,12 +82,14 @@ export const AuthContextProvider = ({ children }: Props) => {
       }
     } else {
       setUser(response);
+      setError("");
     }
     setIsLoading(false);
   };
 
   const onLogout = () => {
     setUser(null);
+    setError("");
     signOutUser();
   };
 

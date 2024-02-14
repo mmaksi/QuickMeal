@@ -13,7 +13,6 @@ import {
 } from "@/features/account/components/account.styles";
 import { AuthenticationContext } from "@/services/authentication/firebase.context";
 import { useContext, useState } from "react";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { colors } from "@/infra/theme/colors";
 
 export const LoginScreen = ({ navigation }) => {
@@ -27,6 +26,8 @@ export const LoginScreen = ({ navigation }) => {
     setError("");
     navigation.goBack();
   };
+
+  console.log(error);
 
   return (
     <AccountBackground>
