@@ -19,10 +19,7 @@ import { FavouritesBar } from "@/components/favourites/favouriteBar.component";
 import Spacer from "@/components/spacer/Spacer";
 
 import { Camelize } from "@/utils/camelize";
-
-const RestaurantsList = styled.FlatList`
-  padding: 0 16px;
-`;
+import { RestaurantsList } from "@/features/restaurants/components/restaurantList.styles";
 
 const Loading = styled.View`
   position: absolute;

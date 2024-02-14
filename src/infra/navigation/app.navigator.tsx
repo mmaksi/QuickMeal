@@ -1,27 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialIcons } from "@expo/vector-icons";
-import { Button, Text } from "react-native";
 
-import { SafeArea } from "@/components/utility/SafeArea";
 import { RestaurantsNavigator } from "./restaurants.navigator";
 import { MapScreen } from "@/features/map/screens/map.screen";
-import { AuthenticationContext } from "@/services/authentication/firebase.context";
 import { FavouritesContextProvider } from "@/services/favourites/favourites.context";
 import { LocationContextProvider } from "@/services/location/locations.context";
 import { RestaurantsContextProvider } from "@/services/restaurants/restaurants.context";
+import { SettingsNavigator } from "./settings.navigator";
 
 const Tab = createBottomTabNavigator();
-
-const Settings = () => {
-  const { onLogout } = useContext(AuthenticationContext);
-  return (
-    <SafeArea>
-      <Text>Settings</Text>
-      <Button title="logout" onPress={() => onLogout()} />
-    </SafeArea>
-  );
-};
 
 export const AppNavigator = () => (
   <FavouritesContextProvider>
@@ -54,8 +42,8 @@ export const AppNavigator = () => (
             }}
           />
           <Tab.Screen
-            name="Settings"
-            component={Settings}
+            name="Settings Navigator"
+            component={SettingsNavigator}
             options={{
               tabBarIcon: ({ color }) => (
                 <MaterialIcons name="settings" size={28} color={color} />
